@@ -3,14 +3,8 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-const express_1 = __importDefault(require("express"));
-const app = express_1.default();
-const PORT = 8080;
-app.get('/', (req, res) => res.send('Express + TypeScript Server'));
-app.get('/express', (req, res) => {
-    res.send({ express: 'YOUR EXPRESS BACKEND IS CONNECTED TO REACT' });
-});
-app.listen(PORT, () => {
-    console.log(`⚡️[server]: Server is running at https://localhost:${PORT}`);
-});
+const app_1 = __importDefault(require("./app"));
+const posts_controller_1 = __importDefault(require("./posts/posts.controller"));
+const app = new app_1.default([new posts_controller_1.default()], 5000);
+app.listen();
 //# sourceMappingURL=index.js.map
